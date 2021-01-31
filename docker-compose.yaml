@@ -9,9 +9,9 @@ version: '2'
 services:
     baikal:
         container_name: calendar
-        image:  yourdockerhubname/calendar
+        image: chrisbarless/calendar
         environment:
-            CONTAINER_DOMAIN_NAME: "example.org"
+            CONTAINER_DOMAIN_NAME: "barless.co"
             CONTAINER_HOST_NAME: "calendar"
         ports:
             - "8800:80"
