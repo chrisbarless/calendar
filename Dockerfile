@@ -33,16 +33,16 @@ RUN                     echo "APT::Get::Assume-Yes true;" >> /etc/apt/apt.conf.d
 #
 # These parameters are specific to your own Postfix relay!  Use your host and domain
 # names.
-RUN                     echo "postfix postfix/mailname string calendar.example.org" | debconf-set-selections && \
+RUN                     echo "postfix postfix/mailname string calendar.barless.co" | debconf-set-selections && \
                         echo "postfix postfix/main_mailer_type string 'Satellite system'" | debconf-set-selections && \
-                        echo "postfix postfix/relayhost string smtpcal.example.org" | debconf-set-selections && \
-                        echo "postfix postfix/root_address string cal-bounce@example.org" | debconf-set-selections
+                        echo "postfix postfix/relayhost string smtpcal.barless.co" | debconf-set-selections && \
+                        echo "postfix postfix/root_address string cal-bounce@barless.co" | debconf-set-selections
 
 
 ### "system-requirements"
 RUN                     apt-get install apache2
 RUN                     apt-get install curl
-RUN                     apt-get install postfix 
+RUN                     apt-get install postfix
 RUN                     apt-get install mailutils
 RUN                     apt-get install rsyslog
 RUN                     apt-get install sqlite3
@@ -99,4 +99,3 @@ RUN                     awk '/vim: syntax/ { printf("# Poxy; CVE-2016-5387\nLoad
 RUN                     cat /tmp/apache2.conf > /etc/apache2/apache2.conf && rm /tmp/apache2.conf
 
 ENTRYPOINT                [ "/runapache2" ]
-
